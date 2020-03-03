@@ -31,7 +31,7 @@ const AJAXProps = {
     header: {"Client-ID": "2qyh8p71ip7wb5duz7s7j4ctujehqn"} //Clave api
 };
 
-var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "javixae"];
+var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp"];
 //Array de los usuarios, estén o no en directo (canales)
 
     var opciones = { // Opciones del embed
@@ -63,9 +63,9 @@ function actualizarCanales() {
 			// Nueva array de los usuarios de la antigua array, que están en directo y con la categoría de GTA V
 			
             for (i = 0; i < usuariosOnline.data.length; i++) { // Se repite tantas veces como usuarios en directo estén o no en GTA V
-                //if (usuariosOnline.data[i].game_id == 32982) { // Game id de 32982 (GTA V)
+                if (usuariosOnline.data[i].game_id == 32982) { // Game id de 32982 (GTA V)
                     live.push(usuariosOnline.data[i].user_name); // Metemos los usuarios a la array que están con GTA V
-                //}
+                }
             }
 			
 			// Variables de los DOM
@@ -83,7 +83,7 @@ function actualizarCanales() {
 				
 				var espectadores = usuariosOnline.data[0].viewer_count;
 				infoCaja.style.height = "65px"; // Establecemos altura para que los dos textos quepan
-				infoCanal.innerHTML = "<p>Canal actual: <span style='color: #089708;'>"+ live[0] + " </span></p>";  // Mostramos info canal
+				infoCanal.innerHTML = "<p>Canal actual: <span style='color: #089708;'>"+ live[0] + "</span></p>";  // Mostramos info canal
 				
 				infoEspectadores.innerHTML = "<p>Espectadores: <span style='color: orange;'>"
 				+ espectadores + "</span></p>"; // Mostramos info espectadores
