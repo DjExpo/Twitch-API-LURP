@@ -66,7 +66,6 @@ function actualizarCanales() {
                 if (usuariosOnline.data[i].game_id == 32982) { // Game id de 32982 (GTA V)
                     live.push(usuariosOnline.data[i].user_name); // Metemos los usuarios a la array que están con GTA V
 					liveViewers.push(usuariosOnline.data[i].viewer_count); // Metemos los viewers, por orden, a la array
-					console.log(live, liveViewers);
                 }
             }
 			
@@ -83,12 +82,11 @@ function actualizarCanales() {
 				container.style.background = "url('')"; // Quitamos la imagen de fondo
 				iframe.setAttribute("style", "display: block;"); // Mostramos el iframe
 				
-				var espectadores = liveViewers[0]; // Variable de los espectadores del canal con más viewers, de GTA V
 				infoCaja.style.height = "65px"; // Establecemos altura para que los dos textos quepan
 				infoCanal.innerHTML = "<p>Canal actual: <span style='color: #089708;'>"+ live[0] + "</span></p>";  // Mostramos info canal
 				
 				infoEspectadores.innerHTML = "<p>Espectadores: <span style='color: orange;'>"
-				+ espectadores + "</span></p>"; // Mostramos info espectadores
+				+ liveViewers[0] + "</span></p>"; // Mostramos info espectadores
 				nodirecto.innerHTML = "";
 			} else { // Si ninguno está haciendo directo, el código de debajo se ejecuta
 				container.style.background = "url('nodirecto.png')"; // Ponemos la imagen de fondo
