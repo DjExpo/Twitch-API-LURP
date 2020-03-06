@@ -31,7 +31,7 @@ const AJAXProps = {
     header: {"Client-ID": "2qyh8p71ip7wb5duz7s7j4ctujehqn"} //Clave api
 };
 
-var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp", "masacreinfernal"];
+var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp", "poseidon"];
 //Array de los usuarios, estén o no en directo (canales)
 
     var opciones = { // Opciones del embed
@@ -59,13 +59,14 @@ function actualizarCanales() {
 
         callAJAX(AJAXProps).then(usuariosOnline => {
 			
-			var live = [];
-			// Nueva array de los usuarios de la antigua array, que están en directo y con la categoría de GTA V
+			var live = []; // Array nueva para los que están en GTA V
+			var liveViewers = []; // Array nueva para el num de viewers, de los que están en GTA V
 			
             for (i = 0; i < usuariosOnline.data.length; i++) { // Se repite tantas veces como usuarios en directo estén o no en GTA V
                 if (usuariosOnline.data[i].game_id == 32982) { // Game id de 32982 (GTA V)
-                    live.push(usuariosOnline.data[0].user_name); // Metemos los usuarios a la array que están con GTA V
-					var espectadores = usuariosOnline.data[0].viewer_count;
+                    live.push(usuariosOnline.data[i].user_name); // Metemos los usuarios a la array que están con GTA V
+					liveViewers.push(usuariosOnline.data[i].viewer_count); // Metemos los viewers, por orden, a la array
+					console.log(live, liveViewers);
                 }
             }
 			
@@ -82,6 +83,7 @@ function actualizarCanales() {
 				container.style.background = "url('')"; // Quitamos la imagen de fondo
 				iframe.setAttribute("style", "display: block;"); // Mostramos el iframe
 				
+				var espectadores = liveViewers[0]; // Variable de los espectadores del canal con más viewers, de GTA V
 				infoCaja.style.height = "65px"; // Establecemos altura para que los dos textos quepan
 				infoCanal.innerHTML = "<p>Canal actual: <span style='color: #089708;'>"+ live[0] + "</span></p>";  // Mostramos info canal
 				
