@@ -31,7 +31,7 @@ const AJAXProps = {
     header: {"Client-ID": "2qyh8p71ip7wb5duz7s7j4ctujehqn"} //Clave api
 };
 
-var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp"];
+var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp", "masacreinfernal"];
 //Array de los usuarios, estén o no en directo (canales)
 
     var opciones = { // Opciones del embed
@@ -65,6 +65,7 @@ function actualizarCanales() {
             for (i = 0; i < usuariosOnline.data.length; i++) { // Se repite tantas veces como usuarios en directo estén o no en GTA V
                 if (usuariosOnline.data[i].game_id == 32982) { // Game id de 32982 (GTA V)
                     live.push(usuariosOnline.data[i].user_name); // Metemos los usuarios a la array que están con GTA V
+					var espectadores = usuariosOnline.data[i].viewer_count;
                 }
             }
 			
@@ -81,7 +82,6 @@ function actualizarCanales() {
 				container.style.background = "url('')"; // Quitamos la imagen de fondo
 				iframe.setAttribute("style", "display: block;"); // Mostramos el iframe
 				
-				var espectadores = usuariosOnline.data[0].viewer_count;
 				infoCaja.style.height = "65px"; // Establecemos altura para que los dos textos quepan
 				infoCanal.innerHTML = "<p>Canal actual: <span style='color: #089708;'>"+ live[0] + "</span></p>";  // Mostramos info canal
 				
@@ -98,19 +98,13 @@ function actualizarCanales() {
 				nodirecto.innerHTML = "<p>Actualmente no hay ningún directo disponible.<br>Vuelve más tarde!</p>";
 				// Mostramos texto cuando no hay canales en directo
 			}
-			
-			function directoAcabado() { // Función que comprueba si el directo mostrado ha terminado
-				if (player.getEnded() == true) { // Si el directo ha terminado el código de debajo se ejecuta
-					container.style.background = "url('nodirecto.png')";
-					iframe.setAttribute("style", "display: none;");
-				
-					infoCaja.style.height = "145px";
-					infoCanal.innerHTML = "";
-					infoEspectadores.innerHTML = "";
-					nodirecto.innerHTML = "<p>Actualmente no hay ningún directo disponible.<br>Vuelve más tarde!</p>";
-				}
-			} setInterval(directoAcabado, 15000); // Intervalo de la función: 15 sec
         });
     });
 	console.log("Actualizando canales"); // Mostramos en consola cuando la función se ejecuta
 } setInterval(actualizarCanales, 210000); // Intervalo de la función: 1 min
+
+function directoAcabado() { // Función que comprueba si el directo mostrado ha terminado
+	if (player.getEnded() == true) { // Si el directo ha terminado la función actualizarCanales se ejecuta
+		actualizarCanales();
+	}
+} setInterval(directoAcabado, 15000); // Intervalo de la función: 15 sec
