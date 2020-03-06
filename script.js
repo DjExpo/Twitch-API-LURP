@@ -64,8 +64,8 @@ function actualizarCanales() {
 			
             for (i = 0; i < usuariosOnline.data.length; i++) { // Se repite tantas veces como usuarios en directo estén o no en GTA V
                 if (usuariosOnline.data[i].game_id == 32982) { // Game id de 32982 (GTA V)
-                    live.push(usuariosOnline.data[i].user_name); // Metemos los usuarios a la array que están con GTA V
-					var espectadores = usuariosOnline.data[i].viewer_count;
+                    live.push(usuariosOnline.data[0].user_name); // Metemos los usuarios a la array que están con GTA V
+					var espectadores = usuariosOnline.data[0].viewer_count;
                 }
             }
 			
