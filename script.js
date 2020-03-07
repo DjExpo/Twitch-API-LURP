@@ -78,7 +78,10 @@ function actualizarCanales() {
 			var iframe = document.getElementsByTagName("iframe")[0];
 			
             if (live.length >= 1) { // Si uno o más usuarios están en directo, el código de debajo se ejecuta
-				player.setChannel(live[0]); // Establecemos canal con más viewers
+				if (player.getChannel() == "" || player.getChannel() != live[0]) { // Si el canal a mostrar es vacio o el primer canal no ha cambiado
+					player.setChannel(live[0]); // Establecemos canal con más viewers
+				}
+				
 				container.style.background = "url('')"; // Quitamos la imagen de fondo
 				iframe.setAttribute("style", "display: block;"); // Mostramos el iframe
 				
@@ -98,13 +101,13 @@ function actualizarCanales() {
 				nodirecto.innerHTML = "<p>Actualmente no hay ningún directo disponible.<br>Vuelve más tarde!</p>";
 				// Mostramos texto cuando no hay canales en directo
 			}
+
         });
     });
-	console.log("Actualizando canales"); // Mostramos en consola cuando la función se ejecuta
-} setInterval(actualizarCanales, 210000); // Intervalo de la función: 1 min
+} setInterval(actualizarCanales, 45000); // Intervalo de la función: 45 sec
 
 function directoAcabado() { // Función que comprueba si el directo mostrado ha terminado
 	if (player.getEnded() == true) { // Si el directo ha terminado la función actualizarCanales se ejecuta
-		actualizarCanales();
+		actualizarCanales(); // Se ejecuta la función actualizarCanales
 	}
 } setInterval(directoAcabado, 15000); // Intervalo de la función: 15 sec
