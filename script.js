@@ -31,7 +31,7 @@ const AJAXProps = {
     header: {"Client-ID": "2qyh8p71ip7wb5duz7s7j4ctujehqn"} //Clave api
 };
 
-var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp"];
+var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp", "playfernan"];
 //Array de los usuarios, estén o no en directo (canales)
 
     var opciones = { // Opciones del embed
@@ -82,6 +82,10 @@ function actualizarCanales() {
 					player.setChannel(live[0]); // Establecemos canal con más viewers
 				}
 				
+				if (player.isPaused() == true) {
+					player.play();
+				}
+				
 				container.style.background = "url('')"; // Quitamos la imagen de fondo
 				iframe.setAttribute("style", "display: block;"); // Mostramos el iframe
 				
@@ -92,6 +96,7 @@ function actualizarCanales() {
 				+ liveViewers[0] + "</span></p>"; // Mostramos info espectadores
 				nodirecto.innerHTML = "";
 			} else { // Si ninguno está haciendo directo, el código de debajo se ejecuta
+				player.pause(); // Paramos el directo que estaba antes para que no se oiga
 				container.style.background = "url('nodirecto.png')"; // Ponemos la imagen de fondo
 				iframe.setAttribute("style", "display: none;"); // Ocultamos el iframe
 				
