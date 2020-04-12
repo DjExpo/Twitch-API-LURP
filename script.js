@@ -31,7 +31,7 @@ const AJAXProps = {
     header: {"Client-ID": "2qyh8p71ip7wb5duz7s7j4ctujehqn"} //Clave api
 };
 
-var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp", "playfernan"];
+var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp", "playfernan", "mrdisyy", "smoked7"];
 //Array de los usuarios, estén o no en directo (canales)
 
     var opciones = { // Opciones del embed
@@ -109,10 +109,4 @@ function actualizarCanales() {
 
         });
     });
-} setInterval(actualizarCanales, 45000); // Intervalo de la función: 45 sec
-
-function directoAcabado() { // Función que comprueba si el directo mostrado ha terminado
-	if (player.getEnded() == true) { // Si el directo ha terminado la función actualizarCanales se ejecuta
-		actualizarCanales(); // Se ejecuta la función actualizarCanales
-	}
-} setInterval(directoAcabado, 15000); // Intervalo de la función: 15 sec
+} setInterval(actualizarCanales, 15000); // Intervalo de la función: 15 sec
