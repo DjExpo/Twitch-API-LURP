@@ -49,9 +49,7 @@ var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "
 	
 // Actualizamos las arrays y el iframe (comprobando los que siguen en directo)
 function actualizarCanales() {
-    var login = users.join('&login=');
     var user_login = users.join('&user_login=');
-    AJAXProps.url = `https://api.twitch.tv/helix/users?login=${login}`;
 
     callAJAX(AJAXProps).then(allUser => {
         // Comprueba si los usuarios del array 'users' están en directo
