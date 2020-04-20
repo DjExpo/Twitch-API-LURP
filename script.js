@@ -107,4 +107,4 @@ function actualizarCanales() {
 
         });
     });
-} setInterval(actualizarCanales, 15000); // Intervalo de la función: 15 sec
+} setInterval(actualizarCanales, 12000); // Intervalo de la función: 15 sec
