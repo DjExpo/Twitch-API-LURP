@@ -31,7 +31,7 @@ const AJAXProps = {
     header: {"Client-ID": "2qyh8p71ip7wb5duz7s7j4ctujehqn"} //Clave api
 };
 
-var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "sutanrp", "playfernan", "mrdisyy", "smoked7"];
+ var users = ["zeekyy", "zzraknoxzz", "minimuhyt", "redfalcon69yt", "bydanif_", "peroniaxdeluxe", "playfernan", "smoked7"];
 //Array de los usuarios, estén o no en directo (canales)
 
     var opciones = { // Opciones del embed
@@ -107,4 +107,4 @@ function actualizarCanales() {
 
         });
     });
-} setInterval(actualizarCanales, 12000); // Intervalo de la función: 15 sec
+} setInterval(actualizarCanales, 12000); // Intervalo de la función: 12 sec
