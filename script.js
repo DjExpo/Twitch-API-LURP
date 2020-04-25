@@ -1,3 +1,5 @@
+/* TWITCH API LURP | Última actualización: 25/04/2020 */
+
 const callAJAX = (props) => {
     const url = props.url,
         method = props.method || "GET",
