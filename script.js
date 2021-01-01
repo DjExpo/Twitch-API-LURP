@@ -1,8 +1,8 @@
 /* TWITCH API LURP | Dj_Expo | Última actualización: 01/01/2020 */
 
 const users = ["r4kn0x", "redfalcon69yt", "lurp_es"];
-const clientID = "2qyh8p71ip7wb5duz7s7j4ctujehqn";
-const clientSecret = "944s796yeyadcq5oxv355f7jrlv1vi";
+const clientID = "XXXXXXX";
+const clientSecret = "XXXXXXX";
 var user_login = users.join('&user_login=');
 var token = null;
 var refresh = 0;
