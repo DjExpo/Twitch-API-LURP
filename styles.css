@@ -1,4 +1,4 @@
-/* TWITCH API LURP | Última actualización: 25/04/2020 */
+/* TWITCH API LURP | Dj_Expo | Última actualización: 01/01/2020 */
 
 body {
 	margin: 0;
@@ -13,7 +13,7 @@ body {
 	background-image: url("");
 }
 
-#caja {
+#footer {
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -21,20 +21,17 @@ body {
 	background-color: rgba(0,0,0,0.6);
 	width: 1280px;
 	height: 0px;
-}
-
-#caja:hover {
-	display: none;
-}
-
-#caja {
 	color: white;
 	font-family: Bahnschrift;
 	font-weight: 800;
 	text-align: center;
 }
 
-#canal {
+#footer:hover {
+	display: none;
+}
+
+#channel {
 	font-size: 30px;
 	position: absolute;
 	line-height : 0px;
@@ -43,7 +40,7 @@ body {
 	transform: translate(-50%, -50%);
 }
 
-#espectadores {
+#viewers {
 	font-size: 30px;
 	position: absolute;
 	line-height : 0px;
@@ -52,7 +49,7 @@ body {
 	transform: translate(-50%, -50%);
 }
 
-#nodirecto {
+#nochannels {
 	font-size: 44px;
 	position: relative;
 	line-height : 58px;
