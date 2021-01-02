@@ -1,4 +1,4 @@
-/* TWITCH API LURP | Dj_Expo | Última actualización: 01/01/2020 */
+/* TWITCH API LURP | Dj_Expo | Última actualización: 02/01/2020 */
 
 const users = ["r4kn0x", "redfalcon69yt", "lurp_es"];
 const clientID = "XXXXXXXX";
@@ -18,10 +18,12 @@ var player = new Twitch.Player("container", options);
 $("iframe").attr("sandbox", "allow-scripts allow-top-navigation allow-same-origin");
 $("iframe").css("display", "none");
 
-$.post(`https://id.twitch.tv/oauth2/token?client_id=${clientID}&client_secret=${clientSecret}&grant_type=client_credentials`, function(result) {
-	token = result.access_token;
-	getData();
-});
+function load() {
+	$.post(`https://id.twitch.tv/oauth2/token?client_id=${clientID}&client_secret=${clientSecret}&grant_type=client_credentials`, function(result) {
+		token = result.access_token;
+		getData();
+	});
+}
 
 function getData() {
 	$.ajax({
@@ -37,8 +39,7 @@ function getData() {
 }
 
 function loadChannels(data) {
-	var liveChannel = [];
-	var liveViewers = [];
+	var liveChannel = [], liveViewers = [];
 	
 	for (i=0;i<data.length;i++) {
 		if (data[i].game_id == 32982) {
@@ -48,27 +49,28 @@ function loadChannels(data) {
 	}
 	
 	if (liveChannel.length >= 1) {
-		if (player.getChannel() == liveChannel[0]) return;
-		player.setChannel(liveChannel[0]);
+		if (player.getChannel() != liveChannel[0]) player.setChannel(liveChannel[0]);
 		
 		if (player.isPaused()) player.play();
 		
 		$("#container").css("background", "url('')");
 		$("iframe").css("display", "block");
 		
-		$("#footer").css("height", "65px");
-		$("#channel").html(`<p>Canal actual: <span style="color: #089708;">${liveChannel[0]}</span></p>`);
-		$("#viewers").html(`<p>Espectadores: <span style='color: orange;'>${liveViewers[0]}</span></p>`);
+		$("#channel").html(`<p>Canal actual: <span id="g">${liveChannel[0]}</span></p>`);
+		$("#viewers").html(`<p>Espectadores: <span id="y">${liveViewers[0]}</span></p>`);
+		$("#channel").css("display", "block");
+		$("#viewers").css("display", "block");
+		$("#nochannels").css("display", "none");
 	} else {
 		player.pause();
 		
 		$("#container").css("background", "url('nodirecto.png')");
 		$("iframe").css("display", "none");
 		
-		$("#footer").css("height", "145px");
-		$("#channel").html("");
-		$("#viewers").html("");
-		$("#nochannels").html("<p>Actualmente no hay ningún directo disponible.<br>Vuelve más tarde!</p>");
+		$("#channel").css("display", "none");
+		$("#viewers").css("display", "none");
+		$("#nochannels").css("display", "block");
+		$("#nochannels").html("<p>Actualmente no hay ningún directo disponible. Vuelve más tarde!</p>");
 	}
 }
 
