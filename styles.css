@@ -1,0 +1,44 @@
+/* TWITCH API LURP | Dj_Expo | Última actualización: 02/01/2020 */
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	position: relative;
+	width: 1280px;
+	height: 720px;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.6);
+	width: 100%;
+	height: auto;
+}
+
+#footer:hover {
+	display: none;
+}
+
+#text-container {
+	display: flex;
+	justify-content: space-between;
+	width: 68%;
+	margin: auto;
+	font-family: Bahnschrift;
+	font-weight: 800;
+	font-size: 30px;
+	color: white;
+	line-height: 15px;
+}
+
+#g {
+	color: #089708;
+}
+
+#y {
+	color: orange;
+}
