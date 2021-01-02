@@ -5,7 +5,6 @@ const clientID = "XXXXXXXX";
 const clientSecret = "XXXXXXXX";
 var user_login = users.join('&user_login=');
 var token = null;
-var refresh = 0;
 
 var options = {
 	width: 1280,
@@ -74,4 +73,4 @@ function loadChannels(data) {
 	}
 }
 
-setInterval(() => getData(), 15000);
+setInterval(() => getData(), 12000);
